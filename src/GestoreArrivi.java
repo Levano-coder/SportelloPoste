@@ -11,6 +11,7 @@ public class GestoreArrivi implements Runnable {
      * la risorsa condivisa listaClienti
      * e la costante per il numero massimo di arrivi */
     private ListaClienti listaClienti;
+    /* ms fra un arrivo e l'altro */
     private final int attesaArrivi = 3000;
     /**
      * constructor
@@ -20,7 +21,9 @@ public class GestoreArrivi implements Runnable {
         this.listaClienti = listaClienti;
     }
     /**
-     * TODO: cosa fa?
+     * esegue un ciclo che termina se interrotto o se finiscono i clienti (clienteArrivato == null)
+     * possiede un finally che verrà eseguito indipendentemente dal termine del ciclo,
+     * sia interrotto, sia concluso normalmente
      * @see Runnable
      */
     public void run() {

@@ -10,7 +10,7 @@ public class ListaClienti {
     private ArrayList<Integer> listaNumeri;
     private int ultimoArrivo;
     private int ultimoServito;
-    private final int numeroMassimo = 2;
+    private final int numeroMassimo = 5;
     /**
      * constructor
      * settaggio delle variabili di istanza
@@ -28,7 +28,11 @@ public class ListaClienti {
     * si genera l'eccezione : IllegalMonitorStateException,*/
 
     /**
-     * TODO: cosa fa?
+     * metodo eseguito da un thread della Classe Sportello
+     * si chiede se è in coda un'altro cliente dopo l'ultimo che ha servito
+     * se c'è lo serve (incrementa di 1 ultimoServito)
+     * else resta in attesa che arrivi...(in attesa di un notify)
+     * @return Integer ultimoServito
      *
      */
     public synchronized Integer rimuoviCliente() throws
@@ -42,8 +46,10 @@ public class ListaClienti {
     }
 
     /**
-     * TODO: cosa fa?
-     *
+     * metodo eseguito da un thread della Classe GestioneArrivi
+     * che produce un nuovo int aggiungendo 1 all'UltimoArrivo
+     * e inserisce tale nuovo numero / ticket nella lista numeri
+     * @return Integer: ultimoArrivo o null se gli arrivi saturano
      */
     public synchronized Integer addCliente() {
         if (ultimoArrivo < numeroMassimo) {
