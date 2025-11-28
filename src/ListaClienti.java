@@ -10,7 +10,7 @@ public class ListaClienti {
     private ArrayList<Integer> listaNumeri;
     private int ultimoArrivo;
     private int ultimoServito;
-    private final int numeroMassimo = 5;
+    private final int numeroMassimo = 15;
     /**
      * constructor
      * settaggio delle variabili di istanza
